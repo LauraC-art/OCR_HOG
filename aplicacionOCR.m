@@ -15,19 +15,19 @@ function aplicacionOCR()
     model.NumNeighbors = 11;
 
     %% Predicción de instancias
-    predictionGivenClass('0',model);
-    predictionGivenClass('1',model);
-    predictionGivenClass('2',model);
-    predictionGivenClass('3',model);
-    predictionGivenClass('4',model);
-    predictionGivenClass('5',model);
-    predictionGivenClass('6',model);
-    predictionGivenClass('7',model);
-    predictionGivenClass('8',model);
-    predictionGivenClass('9',model);
-    predictionGivenClass('C',model);
-    predictionGivenClass('I',model);
-    predictionGivenClass('E',model);
+%     predictionGivenClass('0',model);
+%     predictionGivenClass('1',model);
+%     predictionGivenClass('2',model);
+%     predictionGivenClass('3',model);
+%     predictionGivenClass('4',model);
+%     predictionGivenClass('5',model);
+%     predictionGivenClass('6',model);
+%     predictionGivenClass('7',model);
+%     predictionGivenClass('8',model);
+%     predictionGivenClass('9',model);
+%     predictionGivenClass('C',model);
+%     predictionGivenClass('I',model);
+%     predictionGivenClass('E',model);
     
     %% predicción de imagen completa, se queda   
     % se obtienen los segmentos de la imagen

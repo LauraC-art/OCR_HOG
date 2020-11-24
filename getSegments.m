@@ -1,5 +1,4 @@
-%http://watermarkero.blogspot.mx/
-%http://watermarkero.blogspot.mx/2015/03/reconocimiento-de-caracteres-usando.html
+%nosotros
 %Reconocimiento de caracteres usando Matlab
 
 function [segments] = getSegments(grayImage,DEBUG)

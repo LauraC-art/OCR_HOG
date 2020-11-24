@@ -9,7 +9,7 @@ close all
     folderName ='arialSegmented';    
     dirList = dir(['trainingSet/' folderName]);
     cont = 1; trainset = []; className = [];
-    for ndir=1:2%length(dirList)
+    for ndir=1:length(dirList)
         if ~(strcmp(dirList(ndir).name, '.') || strcmp(dirList(ndir).name, '..'))
             if dirList(ndir).isdir == 1,
                 %% se obtiene la lista de imagenes de cada lista

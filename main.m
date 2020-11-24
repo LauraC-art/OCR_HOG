@@ -1,7 +1,7 @@
 %clc, close all;
-addpath('C:\Users\USER\Documents\Uni\Imágenes\OCR\proyecto\TEST');
+addpath('C:\Users\USER\Documents\Uni\Imágenes\OCR\simpleOCR\trainingSet');
 % Read image
-imagen=imread('TEST/TEST_1.jpg');
+imagen=imread('0.jpg');
 % Show image
 imshow(imagen);
 title('Imagen de entrada')
@@ -40,9 +40,9 @@ while 1
         % Extract letter
         n1=imgn(min(r):max(r),min(c):max(c));  
         % Resize letter (same size of template)
-        img_r=imresize(n1,[128 64]);
+        %img_r=imresize(n1,[128 64]);
         %Uncomment line below to see letters one by one
-        imshow(img_r);pause(0.5)
+        %imshow(img_r);pause(0.5)
         
         %APLICAR HOG
         %Enviar el HOG a la función para la regresión y se compara con los
