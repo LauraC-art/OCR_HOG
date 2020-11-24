@@ -1,4 +1,4 @@
-clc, close all;
+%clc, close all;
 addpath('C:\Users\USER\Documents\Uni\Imágenes\OCR\proyecto\TEST');
 % Read image
 imagen=imread('TEST/TEST_1.jpg');
