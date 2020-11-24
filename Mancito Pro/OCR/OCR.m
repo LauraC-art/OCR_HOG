@@ -1,12 +1,20 @@
-%clc, close all;
-addpath('C:\Users\USER\Documents\Uni\Im√°genes\OCR\simpleOCR\trainingSet');
+% OCR (Optical Character Recognition).
+% Author: Ing. Diego Barrag·n Guerrero 
+% e-mail: diego@matpic.com
+% For more information, visit: www.matpic.com
+%_______________________________________
+% PRINCIPAL PROGRAM
+addpath('C:\Users\USER\Documents\Uni\Im·genes\OCR\OCR HOG\imgs')
+warning off %#ok<WNOFF>
+% Clear all
+clc, close all, clear all
 % Read image
-imagen=imread('0.jpg');
+imagen=imread('TEST_1.jpg');
 % Show image
 imshow(imagen);
-title('Imagen de entrada')
+title('INPUT IMAGE WITH NOISE')
 % Convert to gray scale
-if size(imagen,3)> 1 %Canales de color
+if size(imagen,3)==3 %RGB image
     imagen=rgb2gray(imagen);
 end
 % Convert to BW
@@ -17,19 +25,18 @@ imagen = bwareaopen(imagen,30);
 %Storage matrix word from image
 word=[ ];
 re=imagen;
-
 %Opens text.txt as file for write
 fid = fopen('text.txt', 'wt');
 % Load templates
-% load templates
-% global templates
-% % Compute the number of letters in template file
-% num_letras=size(templates,2);
+load templates
+global templates
+% Compute the number of letters in template file
+num_letras=size(templates,2);
+disp(num_letras)
 while 1
     %Fcn 'lines' separate lines in text
-    [fl re]= separar(re);
+    [fl re]=lines(re);
     imgn=fl;
-    
     %Uncomment line below to see lines one by one
     %imshow(fl);pause(0.5)    
     %-----------------------------------------------------------------     
@@ -40,39 +47,30 @@ while 1
         % Extract letter
         n1=imgn(min(r):max(r),min(c):max(c));  
         % Resize letter (same size of template)
-        %img_r=imresize(n1,[128 64]);
+        img_r=imresize(n1,[42 24]);
         %Uncomment line below to see letters one by one
         %imshow(img_r);pause(0.5)
-        
-        %APLICAR HOG
-        [features, visualization] = extractHOGFeatures(I,'CellSize',[8 8]);
-        %Enviar el HOG a la funci√≥n para la regresi√≥n y se compara con los
-        %HOG del dataset original
-        %S√≠ es 3 o no :v
+        %%HOG
+        %[features, visualization] = extractHOGFeatures(I,'CellSize',[8 8]);
         %-------------------------------------------------------------------
         % Call fcn to convert image to text
-        
-        %letter=read_letter(img_r,num_letras);
-        
+        %AquÌ est· comparando
+        %letter=read_letter(features, num_letras)
+        letter=read_letter(img_r,num_letras);
         % Letter concatenation
-        
-        %word=[word letter];
+        word=[word letter];
     end
     %fprintf(fid,'%s\n',lower(word));%Write 'word' in text file (lower)
-    
-    %fprintf(fid,'%s\n',word);%Write 'word' in text file (upper)
-    
+    fprintf(fid,'%s\n',word);%Write 'word' in text file (upper)
     % Clear 'word' variable
-    
-    %word=[ ];
-    
+    word=[ ];
     %*When the sentences finish, breaks the loop
     if isempty(re)  %See variable 're' in Fcn 'lines'
         break
     end    
 end
-% fclose(fid);
-% %Open 'text.txt' file
-% winopen('text.txt')
-% fprintf('For more information, visit: <a href= "http://www.matpic.com">www.matpic.com </a> \n')
-% clear all
+fclose(fid);
+%Open 'text.txt' file
+winopen('text.txt')
+fprintf('For more information, visit: <a href= "http://www.matpic.com">www.matpic.com </a> \n')
+clear all
